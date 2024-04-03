@@ -158,17 +158,16 @@ public:
     Set<T> grouping(const Set<T>& S) const
     {
         Set<T> result(*this);
-        Node* temp = S.head;
-        while (temp != nullptr)
-        {
-            if (!result.contains(temp->value))
-            {
-                result.add(temp->value);
+
+        for (auto node = S.head; node != nullptr; node = node->next) {
+            if (!result.contains(node->value)) {
+                result.add(node->value);
             }
-            temp = temp->next;
         }
+
         return result;
     }
+
 
     bool contains(const T& x) const
     {
