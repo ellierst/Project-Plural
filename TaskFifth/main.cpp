@@ -28,17 +28,17 @@ int main(int argc, char** argv) {
     shop2.print();
     cout << endl;
 
-    //1
+    //1 Олекса Софія
     Set<string> commonProducts = shop1.intersect(shop2);
     cout << "\nProducts present in every shop:" << endl;
     commonProducts.print();
 
-    //2
+    //2 Кисільчук Катерина
     Set<string> allProductsInStores = shop1.grouping(shop2);
     cout << "\nProducts present in at least one shop:" << endl;
     allProductsInStores.print();
 
-    //3
+    //3 Кисільчук Катерина
     Set<string> allProducts;
     for (const string& product : products) {
         allProducts.add(product);
