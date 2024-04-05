@@ -6,6 +6,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
+	
 	Set<int> intSet;
 
 	intSet.add(1).add(22).add(45).add(17).add(10);
@@ -41,7 +42,7 @@ int main(int argc, char** argv) {
 
 	Set<int> intersectionSet = intSet.intersect(integerSet);
 	cout << "\nIntersection of sets:" << endl;
-	intersectionSet.print();
+    intersectionSet.print();
 
 	Set<int> differenceSet = intSet.diff(integerSet);
 	cout << "\nDifference of sets (intSet - integerSet):" << endl;
@@ -50,6 +51,8 @@ int main(int argc, char** argv) {
 	Set<int> symDifferenceSet = intSet.sym_diff(integerSet);
 	cout << "\nSymmetric difference of sets:" << endl;
 	symDifferenceSet.print();
+
+	cout << endl;
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 	return 0;
