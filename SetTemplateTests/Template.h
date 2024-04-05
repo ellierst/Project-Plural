@@ -139,16 +139,15 @@ public:
     }
 
     void print() const
+{
+    Node* temp = head;
+    while (temp != nullptr)
     {
-        Node* temp = head;
-        cout << "Set contents: ";
-        while (temp != nullptr)
-        {
-            cout << temp->value << " ";
-            temp = temp->next;
-        }
-        cout << endl;
+        cout << temp->value << " ";
+        temp = temp->next;
     }
+    cout << endl;
+}
 
     int getSize()
     {
