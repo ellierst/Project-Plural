@@ -75,27 +75,27 @@ public:
         return *this;
     }
 
-    Set<T>& add(const T& x) 
-{ 
-    Node* newNode = new Node(x); 
-    if (head == nullptr || head->value > x) 
-    { 
-        newNode->next = head; 
-        head = newNode; 
-    } 
-    else 
-    { 
-        Node* temp = head; 
-        while (temp->next != nullptr && temp->next->value < x) 
-        { 
-            temp = temp->next; 
-        } 
-        newNode->next = temp->next; 
-        temp->next = newNode; 
-    } 
-    ++size; 
-    return *this; 
-}
+        Set<T>& add(const T& x)
+    {
+        Node* newNode = new Node(x);
+        if (head == nullptr)
+        {
+            newNode->next = head;
+            head = newNode;
+        }
+        else
+        {
+            Node* temp = head;
+            while (temp->next != nullptr)
+            {
+                temp = temp->next;
+            }
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
+        ++size;
+        return *this;
+    }
 
     Set<T>& add(T* elems, int n)
     {
