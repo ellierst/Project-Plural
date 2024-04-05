@@ -84,10 +84,12 @@ TEST(SetTest, PrintTest) {
     Set<int> set;
     set.add(1);
     set.add(2);
+    set.add(3);
+
     testing::internal::CaptureStdout();
     set.print();
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "Set contents: 1 2 \n");
+    string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "1 2 3 \n");
 }
 
 TEST(SetTest, GetSizeTest) {
