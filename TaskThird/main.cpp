@@ -1,25 +1,23 @@
-#include "Set.h"
+#include "Set.h" 
+#include <iostream> 
+#include <string> 
+
+using namespace std;
 
 int main() {
 
-	Set<string> alphabet;
+    Set<char> alphabet;
 
-	string letters[] = { "a", "b", "r", "a", "c", "a", "d", "a", "b", "r", "a" };
-	alphabet.add(letters, 11);
-	cout << "Contents of letters set:" << endl;
-	alphabet.print();
+    string letters;
 
-	cout << "\nFirst appearance of elements: " << endl;
-	Set<string> firstAppearance = alphabet.first_appearance();
-	firstAppearance.print();
+    cout << "Enter a string of letters: " << endl;
+    getline(cin, letters);
 
-	cout << "\nElements appearing at least twice: " << endl;
-	Set<string> atLeastTwo = alphabet.apper_min_2_times();
-	atLeastTwo.print();
+    cout << "\nFirst appearance of elements: " << alphabet.findFirstAppearance(letters) << endl;
 
-	cout << "\nElements only appear 1 time: " << endl;
-	Set<string> onlyOne = alphabet.apper_1_times();
-	onlyOne.print();
+    cout << "\nElements appearing at least twice: " << alphabet.findAtLeastTwice(letters) << endl;
 
-	return 0;
+    cout << "\nElements only appear 1 time: " << alphabet.findOnlyOnce(letters) << endl;
+
+    return 0;
 }
