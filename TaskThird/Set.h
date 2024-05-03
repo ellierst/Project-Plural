@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 using namespace std;
 
@@ -148,24 +149,10 @@ public:
         cout << endl;
     }
 
-    int getSize() 
+    int getSize()
     {
         return size;
     }
-
-    Set<T> grouping(const Set<T>& S) const
-    {
-        Set<T> result(*this);
-
-        for (auto node = S.head; node != nullptr; node = node->next) {
-            if (!result.contains(node->value)) {
-                result.add(node->value);
-            }
-        }
-
-        return result;
-    }
-
 
     bool contains(const T& x) const
     {
@@ -181,140 +168,57 @@ public:
         return false;
     }
 
+string findFirstAppearance(const string& letters) {
+    string firstAppearanceString;
+    Set<char> appeared;
 
-    Set<T> intersect(const Set<T>& S) const
-    {
-        Set<T> result;
-
-        Node* temp = head;
-        while (temp != nullptr)
-        {
-            if (S.contains(temp->value))
-            {
-                result.add(temp->value);
-            }
-            temp = temp->next;
+    for (char letter : letters) {
+        if (!appeared.contains(letter)) {
+            firstAppearanceString.push_back(letter);
+            appeared.add(letter);
         }
-
-        return result;
     }
 
+    return firstAppearanceString;
+}
 
-    Set<T> diff(const Set<T>& S) const
-    {
-        Set<T> result;
 
-        Node* temp = head;
-        while (temp != nullptr)
-        {
-            if (!S.contains(temp->value))
-            {
-                result.add(temp->value);
-            }
-            temp = temp->next;
+string findAtLeastTwice(const string& letters) {
+    string atLeastTwiceString;
+    Set<char> atLeastTwice;
+
+    for (char letter : letters) {
+        if (letters.find(letter, letters.find(letter) + 1) != string::npos) {
+            atLeastTwice.add(letter);
         }
-
-        return result;
     }
 
-    Set<T> sym_diff(const Set<T>& S) const
-    {
-        Set<T> result;
-
-        Node* temp1 = head;
-        while (temp1 != nullptr)
-        {
-            if (!S.contains(temp1->value))
-            {
-                result.add(temp1->value);
-            }
-            temp1 = temp1->next;
+    for (char letter : letters) {
+        if (atLeastTwice.contains(letter) && atLeastTwiceString.find(letter) == string::npos) {
+            atLeastTwiceString.push_back(letter);
         }
-
-        Node* temp2 = S.head;
-        while (temp2 != nullptr)
-        {
-            if (!contains(temp2->value))
-            {
-                result.add(temp2->value);
-            }
-            temp2 = temp2->next;
-        }
-
-        return result;
     }
 
-    Set<T>& first_appearance() const
-    {
-        Set<T> result;
-        Node* temp = head;
-        while (temp != nullptr)
-        {
-            if (!result.contains(temp->value))
-            {
-                result.add(temp->value);
-                cout << temp->value << " ";
-            }
-            temp = temp->next;
+    return atLeastTwiceString;
+}
+
+
+string findOnlyOnce(const string& letters) {
+    string onlyOnceString;
+    Set<char> atLeastTwice;
+
+    for (char letter : letters) {
+        if (letters.find(letter, letters.find(letter) + 1) != string::npos) {
+            atLeastTwice.add(letter);
         }
-        return result;
     }
 
-    Set<T> apper_min_2_times() const
-    {
-        Set<T> result;
-        Node* temp = head;
-        while (temp != nullptr)
-        {
-            int count = 0;
-            Node* temp2 = head;
-            while (temp2 != nullptr)
-            {
-                if (temp2->value == temp->value)
-                {
-                    count++;
-                }
-                if (count >= 2)
-                {
-                    break;
-                }
-                temp2 = temp2->next;
-            }
-            if (count >= 2 && !result.contains(temp->value))
-            {
-                result.add(temp->value);
-            }
-            temp = temp->next;
+    for (char letter : letters) {
+        if (!atLeastTwice.contains(letter) && onlyOnceString.find(letter) == string::npos) {
+            onlyOnceString.push_back(letter);
         }
-        return result;
     }
 
-    Set<T> apper_1_times() const
-    {
-        Set<T> result;
-        Node* temp = head;
-    while (temp != nullptr)
-    {
-        int count = 0;
-        Node* temp2 = head;
-        while (temp2 != nullptr)
-        {
-            if (temp2->value == temp->value)
-            {
-                count++;
-            }
-            if (count >= 2)
-            {
-                break;
-            }
-            temp2 = temp2->next;
-        }
-        if (count < 2)
-        {
-            result.add(temp->value);
-        }
-        temp = temp->next;
-    }
-        return result;
-    }
+    return onlyOnceString;
+}
 };
